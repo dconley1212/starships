@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, FlatList, Pressable } from "react-native";
 
-const StarshipList = ({ starShipNames }) => {
+const StarshipList = ({ starShipNames, navigation }) => {
   return (
     <View style={styles.lowerContainer}>
       <FlatList
@@ -21,17 +21,14 @@ const StarshipList = ({ starShipNames }) => {
 
 const styles = StyleSheet.create({
   lowerContainer: {
-    flex: 1,
-    padding: 50,
-    width: 400,
+    width: "90%",
   },
   item: {
     flexDirection: "row",
     justifyContent: "center",
     backgroundColor: "#f9de4b",
-    padding: 30,
+    padding: 20,
     marginVertical: 7,
-    width: 300,
   },
 });
 

@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View, Button, FlatList } from "react-native";
+import React from "react";
 import { NavigationContainer, StackActions } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "./components/home";
