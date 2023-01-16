@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View, Button, FlatList } from "react-native";
+import React, { useState, useEffect } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import StarshipList from "./starshipList";
 
 const Home = ({ navigation }) => {
   const [isloading, setIsLoading] = useState(false);
   const [starShipNames, setStarShipNames] = useState([]);
 
-  const handleViewStarships = () => {
+  useEffect(() => {
     fetch("https://swapi.dev/api/starships")
       .then((resp) => resp.json())
       .then((json) => {
@@ -20,29 +21,14 @@ const Home = ({ navigation }) => {
         setStarShipNames(names);
       })
       .catch((err) => console.log(err));
-  };
+  }, []);
+
   return (
     <View style={styles.container}>
       <View>
-        <Text>Welcome to your Star Wars Starship Catalogue</Text>
-        <Button onPress={handleViewStarships} title="View Starships"></Button>
+        <Text>Select a Stars Starship below to learn more</Text>
       </View>
-      {starShipNames.length > 0 ? (
-        <View style={styles.lowerContainer}>
-          <FlatList
-            data={starShipNames}
-            renderItem={({ item }) => (
-              //   <Text style={styles.item}>{item.starshipName}</Text>
-              <Button
-                onPress={() =>
-                  navigation.navigate("Starship", { url: item.url })
-                }
-                title={item.starshipName}
-              ></Button>
-            )}
-          />
-        </View>
-      ) : null}
+      <StarshipList starShipNames={starShipNames} />
     </View>
   );
 };
