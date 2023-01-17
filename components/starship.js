@@ -11,7 +11,6 @@ const Starship = ({ route }) => {
     fetch(`${url}`)
       .then((resp) => resp.json())
       .then((json) => {
-        console.log(json);
         setStarship(json);
         setIsLoading(false);
       })
@@ -21,7 +20,9 @@ const Starship = ({ route }) => {
   return (
     <>
       {isLoading ? (
-        <Loading style={styles.loadingIcon} />
+        <View style={styles.loadingContainer}>
+          <Loading />
+        </View>
       ) : (
         <View style={styles.container}>
           <Text style={styles.text}>Starship Name: {starship.name}</Text>
@@ -51,6 +52,13 @@ const Starship = ({ route }) => {
 };
 
 const styles = StyleSheet.create({
+  loadingContainer: {
+    flex: 1,
+    backgroundColor: "#000000",
+    justifyContent: "flex-start",
+    padding: 40,
+    marginTop: 0,
+  },
   container: {
     flex: 1,
     backgroundColor: "#000000",
@@ -60,19 +68,11 @@ const styles = StyleSheet.create({
     marginTop: 0,
   },
   text: {
-    flexDirection: "row",
     color: "#f9de4b",
     padding: 25,
     backgroundColor: "#1d1e1f",
     fontWeight: "500",
-  },
-  loadingIcon: {
-    flex: 1,
-    backgroundColor: "#000000",
-    justifyContent: "space-evenly",
-    padding: 10,
-    width: "100%",
-    marginTop: 0,
+    fontSize: 18,
   },
 });
 

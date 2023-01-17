@@ -27,8 +27,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     backgroundColor: "#f9de4b",
-    padding: 20,
+    padding: 18,
     marginVertical: 7,
+    borderRadius: 5,
+  },
+  itemText: {
+    fontSize: 16,
+    fontWeight: "400",
   },
 });
 

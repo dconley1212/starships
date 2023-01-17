@@ -31,7 +31,9 @@ const Home = ({ navigation }) => {
         <Text style={styles.text}>Select a Star Wars Starship:</Text>
       </View>
       {isLoading ? (
-        <Loading />
+        <View style={styles.loadingContainer}>
+          <Loading />
+        </View>
       ) : (
         <StarshipList starShipNames={starShipNames} navigation={navigation} />
       )}
@@ -47,6 +49,13 @@ const styles = StyleSheet.create({
     padding: 10,
     marginTop: 20,
     width: "100%",
+    marginTop: 0,
+  },
+  loadingContainer: {
+    backgroundColor: "#000000",
+    justifyContent: "flex-start",
+    height: "100%",
+    padding: 40,
     marginTop: 0,
   },
   textContainer: {
